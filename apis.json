@@ -1,0 +1,52 @@
+[
+  {
+    "repo-name": "artext",
+    "repo-title": "Artext: Artificial Text Generation",
+    "description": "Probabilistic Noising of Natural Language"
+  },
+  {
+    "repo-name": "paraphraser",
+    "repo-title": "Paraphraser",
+    "description": "English sentence paraphraser"
+  },
+  {
+    "repo-name": "summerization",
+    "repo-title": "News Summarization",
+    "description": "Tensorflow Implementation of Deep Learning Approach for News Summarization Task via Sequence-to-sequence Model with Pointer"
+  },
+  {
+    "repo-name": "event-extraction",
+    "repo-title": "Event Extraction",
+    "description": "Tensorflow Implementation of Deep Learning Approach for Event Extraction(ACE 2005) via Dynamic Multi-Pooling Convolutional Neural Networks"
+  },
+  {
+    "repo-name": "gender-stereotyping-word-embedding",
+    "repo-title": "Mitigating Stereotypes in Word Embedding",
+    "description": "Mitigating Stereotypes in Word Embedding through Sentiment Modulation"
+  },
+  {
+    "repo-name": "annotation-tool",
+    "repo-title": "Annotation Tool",
+    "description": "An annotation tool, which distributes texts that may show a copyright issue when distributing the original text type, to several annotators without copyright issues"
+  },
+  {
+    "repo-name": "monolingual-sentence-aligner",
+    "repo-title": "Monolingual Sentence Aligner",
+    "description": "Monolingual sentence alignment"
+  },
+  {
+    "repo-name": "automatic-tension-detection",
+    "repo-title": "Automatic Tension Detection",
+    "description": "Automatic tension detection, based on the linguistic features revealed in the target document."
+  },
+  {
+    "repo-name": "context-dependent-evidence-detection",
+    "repo-title": "Context Dependent Evidence Detection ",
+    "description": "This repository is for the task of context-dependent-evidence-detection (CDED), which was initially introduced by <Rinott, Ruty, et al. \"Show me your evidence-an automatic method for context dependent evidence detection.\" EMNLP 2015.>"
+  },
+  {
+    "repo-name": "argument-reasoning-comprehension",
+    "repo-title": "Argument Reasoning Comprehension",
+    "description": "The codes, targeting a task: SemEval 2018 Task12, the argument reasoning comprehension task."
+  }
+]
