@@ -33,8 +33,7 @@ def log_api_access(key):
     log.save()
 
 
-
-# APIs
+# All APIs
 
 # artext
 @app.route('/artext')
@@ -56,6 +55,27 @@ def artext_process():
     noises = artxt.noise_document(doc)
 
     response = jsonify({'input': doc, 'output': '\n'.join(noises)})
+    return response
+
+
+# paraphrase
+@app.route('/paraphraser')
+def paraphrase_view():
+    return render_template('api_paraphraser.html')
+
+import requests
+
+@app.route('/api/paraphrase', methods=['POST'])
+def paraphrase_process():
+    log_api_access('paraphrase')
+
+    data = request.get_json()
+    sentence = data['input']
+
+    url = 'http://credon.kaist.ac.kr:8082/paraphrase'
+    res = requests.post(url, json={'sentence': sentence})
+
+    response = jsonify({'input': sentence, 'output': res.text})
     return response
 
 
