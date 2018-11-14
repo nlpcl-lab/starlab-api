@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'base/head.html' %}
+
+<body>
+{% include 'base/navbar.html' %}
+
+<!-- Page Header -->
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h2 style="position: relative;">Monolingual Sentence Aligner</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-10 mx-auto">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <textarea class="form-control" id="input" rows="5" name="input_1" placeholder="Input text..." required=""></textarea>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <textarea class="form-control" id="input" rows="5" name="input_2" placeholder="Input text..." required=""></textarea>
+                </div>
+            </div>
+            <hr>
+            <button class="btn btn-primary btn-lg btn-block" id="btn-submit">Align</button>
+            <hr>
+            <pre class="card-text bg-light" style="text-align:left !important; line-height:1.7; padding: 0.4cm">
+                <div class="item" id="output"></div>
+            </pre>
+        </div>
+    </div>
+</div>
+
+{% include 'base/footer.html' %}
+{% include 'base/script.html' %}
+
+<script>
+    function api_call(input_text_1, input_text_1) {
+        $.ajax({
+            url: '/api/monolingual-sentence-aligner',
+            contentType: 'application/json',
+            type: 'POST',
+            data: JSON.stringify({
+               input_1: input_text_1,
+               input_2: input_text_2,
+            }),
+        }).done(function (data) {
+            $('#output').html(data.output);
+        }).fail(function (data) {
+            $('#output').html("Request failed!");
+            console.error(data);
+        })
+    }
+
+    $(document).ready(function() {
+        $('#btn-submit').click(function() {
+            api_call($("#input_1").val(), $("#input_2").val());
+        });
+    });
+</script>
+
+</body>
+
+</html>
