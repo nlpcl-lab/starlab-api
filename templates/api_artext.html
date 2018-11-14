@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'base/head.html' %}
+
+<body>
+{% include 'base/navbar.html' %}
+
+<!-- Page Header -->
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h2 style="position: relative;">Artext: Artificial Text Generation</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div>
+                <textarea class="form-control" id="input" rows="4" name="input" placeholder="Input text..." required=""></textarea>
+                <div class="invalid-feedback">Please enter an input text.</div>
+                <hr>
+                <button class="btn btn-primary btn-lg btn-block" id="btn-submit">Generate</button>
+                <hr>
+                <pre class="card-text bg-light" style="text-align:left !important; line-height:1.7; padding: 0.4cm">
+                    <div class="item" id="output"></div>
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'base/footer.html' %}
+{% include 'base/script.html' %}
+
+</body>
+
+</html>
