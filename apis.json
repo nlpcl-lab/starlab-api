@@ -20,16 +20,6 @@
     "description": "Tensorflow Implementation of Deep Learning Approach for Event Extraction(ACE 2005) via Dynamic Multi-Pooling Convolutional Neural Networks"
   },
   {
-    "repo-name": "gender-stereotyping-word-embedding",
-    "repo-title": "Mitigating Stereotypes in Word Embedding",
-    "description": "Mitigating Stereotypes in Word Embedding through Sentiment Modulation"
-  },
-  {
-    "repo-name": "annotation-tool",
-    "repo-title": "Annotation Tool",
-    "description": "An annotation tool, which distributes texts that may show a copyright issue when distributing the original text type, to several annotators without copyright issues"
-  },
-  {
     "repo-name": "monolingual-sentence-aligner",
     "repo-title": "Monolingual Sentence Aligner",
     "description": "Monolingual sentence alignment"
