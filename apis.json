@@ -10,7 +10,7 @@
     "description": "English sentence paraphraser"
   },
   {
-    "repo-name": "summerization",
+    "repo-name": "summarization",
     "repo-title": "News Summarization",
     "description": "Tensorflow Implementation of Deep Learning Approach for News Summarization Task via Sequence-to-sequence Model with Pointer"
   },
@@ -31,7 +31,7 @@
   },
   {
     "repo-name": "context-dependent-evidence-detection",
-    "repo-title": "Context Dependent Evidence Detection ",
+    "repo-title": "Context Dependent Evidence Detection",
     "description": "This repository is for the task of context-dependent-evidence-detection (CDED), which was initially introduced by <Rinott, Ruty, et al. \"Show me your evidence-an automatic method for context dependent evidence detection.\" EMNLP 2015.>"
   },
   {
