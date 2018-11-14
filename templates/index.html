@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'base/head.html' %}
+
+<body>
+{% include 'base/navbar.html' %}
+
+<!-- Page Header -->
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1 style="position: relative;">CredOn APIs</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+            {% for api in apis %}
+            <div class="post-preview">
+                <a href="/{{api['repo-name']}}">
+                    <h2 class="post-title">
+                        {{api['repo-title']}}
+                    </h2>
+                    <h3 class="post-subtitle">
+                        {{api['description']}} <br/>
+                    </h3>
+                </a>
+                <p class="post-meta">
+                    Total Requests: {{APIAccessLog.objects.filter(key=api['repo-name']).count()}}
+                </p>
+            </div>
+            {% endfor %}
+
+            <hr>
+        </div>
+    </div>
+</div>
+
+{% include 'base/footer.html' %}
+{% include 'base/script.html' %}
+
+</body>
+
+</html>
