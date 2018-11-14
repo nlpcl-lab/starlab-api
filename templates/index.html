@@ -26,16 +26,16 @@
 
             {% for api in apis %}
             <div class="post-preview">
-                <a href="/{{api['repo-name']}}">
+                <a href="/{{api['api-name']}}">
                     <h2 class="post-title">
-                        {{api['repo-title']}}
+                        {{api['api-title']}}
                     </h2>
                     <h3 class="post-subtitle">
                         {{api['description']}} <br/>
                     </h3>
                 </a>
                 <p class="post-meta">
-                    Total Requests: {{APIAccessLog.objects.filter(key=api['repo-name']).count()}}
+                    Total Requests: {{APIAccessLog.objects.filter(key=api['api-name']).count()}}
                 </p>
             </div>
             {% endfor %}
