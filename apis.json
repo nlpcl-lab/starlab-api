@@ -1,42 +1,42 @@
 [
   {
-    "repo-name": "artext",
-    "repo-title": "Artext: Artificial Text Generation",
+    "api-name": "artext",
+    "api-title": "Artext: Artificial Text Generation",
     "description": "Probabilistic Noising of Natural Language"
   },
   {
-    "repo-name": "paraphraser",
-    "repo-title": "Paraphraser",
+    "api-name": "paraphraser",
+    "api-title": "Paraphraser",
     "description": "English sentence paraphraser"
   },
   {
-    "repo-name": "summarization",
-    "repo-title": "News Summarization",
+    "api-name": "summarization",
+    "api-title": "News Summarization",
     "description": "Tensorflow Implementation of Deep Learning Approach for News Summarization Task via Sequence-to-sequence Model with Pointer"
   },
   {
-    "repo-name": "event-extraction",
-    "repo-title": "Event Extraction",
+    "api-name": "event-extraction",
+    "api-title": "Event Extraction",
     "description": "Tensorflow Implementation of Deep Learning Approach for Event Extraction(ACE 2005) via Dynamic Multi-Pooling Convolutional Neural Networks"
   },
   {
-    "repo-name": "monolingual-sentence-aligner",
-    "repo-title": "Monolingual Sentence Aligner",
+    "api-name": "monolingual-sentence-aligner",
+    "api-title": "Monolingual Sentence Aligner",
     "description": "Monolingual sentence alignment"
   },
   {
-    "repo-name": "automatic-tension-detection",
-    "repo-title": "Automatic Tension Detection",
+    "api-name": "automatic-tension-detection",
+    "api-title": "Automatic Tension Detection",
     "description": "Automatic tension detection, based on the linguistic features revealed in the target document."
   },
   {
-    "repo-name": "context-dependent-evidence-detection",
-    "repo-title": "Context Dependent Evidence Detection",
+    "api-name": "context-dependent-evidence-detection",
+    "api-title": "Context Dependent Evidence Detection",
     "description": "This repository is for the task of context-dependent-evidence-detection (CDED), which was initially introduced by <Rinott, Ruty, et al. \"Show me your evidence-an automatic method for context dependent evidence detection.\" EMNLP 2015.>"
   },
   {
-    "repo-name": "argument-reasoning-comprehension",
-    "repo-title": "Argument Reasoning Comprehension",
+    "api-name": "argument-reasoning-comprehension",
+    "api-title": "Argument Reasoning Comprehension",
     "description": "The codes, targeting a task: SemEval 2018 Task12, the argument reasoning comprehension task."
   }
 ]
