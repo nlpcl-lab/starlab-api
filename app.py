@@ -65,9 +65,9 @@ def paraphrase_view():
 
 import requests
 
-@app.route('/api/paraphrase', methods=['POST'])
+@app.route('/api/paraphraser', methods=['POST'])
 def paraphrase_process():
-    log_api_access('paraphrase')
+    log_api_access('paraphraser')
 
     data = request.get_json()
     sentence = data['input']
@@ -76,6 +76,127 @@ def paraphrase_process():
     res = requests.post(url, json={'sentence': sentence})
 
     response = jsonify({'input': sentence, 'output': res.text})
+    return response
+
+
+# summarize
+@app.route('/summarization')
+def summarize_view():
+    return render_template('api_summarization.html')
+
+
+@app.route('/api/summarization', methods=['POST'])
+def summarization_process():
+    log_api_access('summarization')
+
+    data = request.get_json()
+    sentence = data['input']
+
+    # TODO: Implement Operation Here
+    summary = sentence
+
+    response = jsonify({'input': sentence, 'output': summary})
+    return response
+
+
+# event-extraction
+@app.route('/event-extraction')
+def event_extraction_view():
+    return render_template('api_event_extraction.html')
+
+
+@app.route('/api/event-extraction', methods=['POST'])
+def api_event_extraction():
+    log_api_access('event-extraction')
+
+    data = request.get_json()
+    sentence = data['input']
+
+    # TODO: Implement Operation Here
+    output = sentence
+
+    response = jsonify({'input': sentence, 'output': output})
+    return response
+
+
+# monolingual-sentence-aligner
+@app.route('/monolingual-sentence-aligner')
+def sentence_aligner_view():
+    return render_template('api_sentence_aligner.html')
+
+
+@app.route('/api/monolingual-sentence-aligner', methods=['POST'])
+def api_sentence_aligner():
+    log_api_access('monolingual-sentence-aligner')
+
+    data = request.get_json()
+    input_1 = data['input_1']
+    input_2 = data['input_2']
+
+    # TODO: Implement Operation Here
+    output = input_1 + input_2
+
+    response = jsonify({'input_1': input_1, 'input_2': input_2, 'output': output})
+    return response
+
+
+# automatic-tension-detection
+@app.route('/automatic-tension-detection')
+def tension_detection_view():
+    return render_template('api_tension_detection.html')
+
+
+@app.route('/api/automatic-tension-detection', methods=['POST'])
+def api_tension_detection():
+    log_api_access('automatic-tension-detection')
+
+    data = request.get_json()
+    sentence = data['input']
+
+    # TODO: Implement Operation Here
+    output = sentence
+
+    response = jsonify({'input': sentence, 'output': output})
+    return response
+
+
+# context-dependent-evidence-detection
+@app.route('/context-dependent-evidence-detection')
+def evidence_detection_view():
+    return render_template('api_evidence_detection.html')
+
+
+@app.route('/api/context-dependent-evidence-detection', methods=['POST'])
+def api_evidence_detection():
+    log_api_access('context-dependent-evidence-detection')
+
+    data = request.get_json()
+    sentence = data['input']
+
+    # TODO: Implement Operation Here
+    output = sentence
+
+    response = jsonify({'input': sentence, 'output': output})
+    return response
+
+
+# argument-reasoning-comprehension
+@app.route('/argument-reasoning-comprehension')
+def argument_comprehension_view():
+    return render_template('api_argument_comprehension.html')
+
+
+@app.route('/api/argument-reasoning-comprehension', methods=['POST'])
+def api_argument_comprehension():
+    log_api_access('argument-reasoning-comprehension')
+
+    data = request.get_json()
+    sentence = data['input']
+
+    # TODO: Implement Operation Here
+    output = sentence
+
+    response = jsonify({'input': sentence, 'output': output})
     return response
 
 
