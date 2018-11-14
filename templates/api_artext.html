@@ -40,6 +40,30 @@
 {% include 'base/footer.html' %}
 {% include 'base/script.html' %}
 
+<script>
+    function api_call(input_text) {
+        $.ajax({
+            url: '/api/artext/noise',
+            contentType: 'application/json',
+            type: 'POST',
+            data: JSON.stringify({
+               input: input_text,
+            }),
+        }).done(function (data) {
+            $('#output').html(data.output);
+        }).fail(function (data) {
+            $('#output').html("Request failed!");
+            console.error(data);
+        })
+    }
+
+    $(document).ready(function() {
+        $('#btn-submit').click(function() {
+            api_call($("#input").val());
+        });
+    });
+</script>
+
 </body>
 
 </html>
