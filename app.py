@@ -1,6 +1,7 @@
 import os, sys, datetime, random, json
 from flask import Flask, session, g, request, jsonify, render_template, redirect, Response
 from flask_mongoengine import MongoEngine
+from subprocess import Popen, PIPE
 
 import config
 from models import APIAccessLog
@@ -63,19 +64,25 @@ def api_artext():
 def paraphrase_view():
     return render_template('api_paraphraser.html')
 
-import requests
-
+paraphraser_dir_path = '/home/webmaster/Web_API/API/Paraphrase_Generator'
+paraphraser_args = [
+    '{}/Paraphrase/moses'.format(paraphraser_dir_path), '-f',
+    '{}/Working/mert-work/moses.ini'.format(paraphraser_dir_path),
+    '-n-best-list',
+    '2',
+]
+paraphraser_proc = Popen(paraphraser_args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
 @app.route('/api/paraphraser', methods=['POST'])
 def api_paraphraser():
     log_api_access('paraphraser')
-
     data = request.get_json()
-    sentence = data['input']
+    sentence = data['input'] + '\n'
+    paraphraser_proc.stdin.write(sentence.encode())
+    paraphraser_proc.stdin.flush()
+    result = paraphraser_proc.stdout.readline().decode()
+    result = result.replace('\n', '')
 
-    url = 'http://credon.kaist.ac.kr:8082/paraphrase'
-    res = requests.post(url, json={'sentence': sentence})
-
-    response = jsonify({'input': sentence, 'output': res.text})
+    response = jsonify({'input': sentence, 'output': result})
     return response
 
 
