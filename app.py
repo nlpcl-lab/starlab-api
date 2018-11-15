@@ -47,7 +47,7 @@ artxt.samples = 10
 artxt.error_overall = 0.25
 
 @app.route('/api/artext/noise', methods=['POST'])
-def artext_process():
+def api_artext():
     log_api_access('artext')
 
     data = request.get_json()
@@ -66,7 +66,7 @@ def paraphrase_view():
 import requests
 
 @app.route('/api/paraphraser', methods=['POST'])
-def paraphrase_process():
+def api_paraphraser():
     log_api_access('paraphraser')
 
     data = request.get_json()
