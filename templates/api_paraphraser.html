@@ -22,8 +22,33 @@
 <!-- Main Content -->
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="col-lg-10 col-md-10 mx-auto">
             <div>
+                <h3>API Usage</h3>
+                <hr/>
+                <div class="bg-light" style="text-align:left !important; padding: 0.4cm">
+                    <p>Use the following details to make API calls. The input and output data are both in <b>json</b> format.</p>
+                    <strong>Action: </strong> <code>Generate paraphrase of an input sentence.</code><br/>
+                    <strong>URL: </strong>
+                        <code>/api/paraphraser</code><br/>
+                    <strong>Method: </strong> 
+                        <code>POST</code> <br/>
+                    <strong>URL Params: </strong>
+                        <code>None</code> <br/>
+                    <strong>Data Params: </strong>
+                        <code>{ input: [string] }</code> <br/>
+                    <strong>Success Response: </strong>
+                        <code>{ input: "Input sentence.", ouput: "Paraphrase." }</code> <br/>
+
+                    <p>We use the standard HTTP response codes of RESTful APIs.</p>
+                </div>
+            </div>
+
+            <hr/><br/>
+
+            <div>
+                <h3>Live Demo</h3>
+                <hr/>
                 <textarea class="form-control" id="input" rows="4" name="input" placeholder="Input text..." required=""></textarea>
                 <div class="invalid-feedback">Please enter an input text.</div>
                 <hr>
