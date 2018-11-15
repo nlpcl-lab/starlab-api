@@ -1,6 +1,6 @@
 # StarLab-APIs
 
-The home of all APIs for the [CredOn](http://credon.kaist.ac.kr/apis) project at [NLP☆CL](http://nlp.kaist.ac.kr).
+The home of all APIs for the [CredOn](http://credon.kaist.ac.kr/apis) project of [NLP☆CL](http://nlp.kaist.ac.kr).
 
 
 ## Setup
@@ -25,7 +25,11 @@ To add a new API to this website perform the following three steps.
   }
 ```
 
-2. Create an view page named `api_<api-name>.html` in the `templates` folder. This is used for accepting input data and displaying results. In addition to text, you can include visual results as per your needs. See `templates/api_artext.html` as reference.
+2. Create a view page named `api_<api-name>.html` in the `templates` folder. This page has two sections:
+   1. A detailed documentation of the API usage.
+   2. A live demo of the API, which accepts input data and displays result. Feel free to include graphs and visualizations of the output here.  
+
+   See `templates/api_artext.html` as reference.
 
 
 3. Implement two funtions in `app.py`, one for simply rendering the API view page and second for processing the input and returning a `json` reponse. See the implementations of `artext_view()` and `api_artext()` in `app.py` as reference.
