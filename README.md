@@ -6,16 +6,16 @@ The home of all APIs for the [CredOn](http://credon.kaist.ac.kr/apis) project of
 ## Setup
 
 Requires  
-`Python 3, MongoDb, flask, flask_mongoengine, requests, ...`.
+`Python 3, MongoDb, flask, flask_mongoengine, ...`.
 
 **Note**  The API modules have their own dependencies; refer to the individual modules for installation details.
 
 
 ## Add new API
 
-To add a new API to this website perform the following three steps.
+To add a new API module to this website perform the following three steps:
 
-1. Create an entry in `apis.json` containing some details of the API. Example:
+1. Create an entry in `apis.json`, containing some details of the API. Example:
 
 ```json
   {
@@ -32,7 +32,9 @@ To add a new API to this website perform the following three steps.
    See `templates/api_artext.html` as reference.
 
 
-3. Implement two funtions in `app.py`, one for simply rendering the API view page and second for processing the input and returning a `json` reponse. See the implementations of `artext_view()` and `api_artext()` in `app.py` as reference.
+3. Implement two funtions in `app.py`, one to render the new API's view page and second to process the input data and return result in `json` format.  
+
+   See the implementations of `artext_view()` and `api_artext()` functions in `app.py` as references.
 
 
 ## Run
