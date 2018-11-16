@@ -37,10 +37,25 @@ To add a new API module to this website perform the following three steps:
    See the implementations of `artext_view()` and `api_artext()` functions in `app.py` as references.
 
 
-## Run
+## Run Service
+
+To run the service in background, `cd` to `starlab-api` folder and execute the following command:
 
 ```bash
-sudo nohup python3 app.py &
+sudo nohup python app.py >> log.txt 2>&1 &
+echo $! > pid.txt
+```
+
+The site should be accessible at `http://<host-ip>:8084`.  
+Check `log.txt` if there are any problems.
+
+
+# Stop Service
+
+To kill the service started above, execute the following command inside the `starlab-api` folder:
+
+```bash
+sudo kill -9 `cat pid.txt`
 ```
 
 
