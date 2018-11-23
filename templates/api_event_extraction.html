@@ -27,7 +27,20 @@
                 <h3>API Usage</h3>
                 <hr/>
                 <div class="bg-light" style="text-align:left !important; padding: 0.4cm">
-                    <p>Coming soon.</p>
+                    <p>Use the following details to make API calls. The input and output data are both in <b>json</b> format.</p>
+                    <strong>Action: </strong> <code>Extract event trigger of an input sentence.</code><br/>
+                    <strong>URL: </strong>
+                        <code>/api/event-extraction</code><br/>
+                    <strong>Method: </strong>
+                        <code>POST</code> <br/>
+                    <strong>URL Params: </strong>
+                        <code>None</code> <br/>
+                    <strong>Data Params: </strong>
+                        <code>{ input: [string] }</code> <br/>
+                    <strong>Success Response: </strong>
+                        <code>{ input: "Input sentence.", ouput: "token1/type token2/type ..." }</code> <br/>
+
+                    <p>We use the standard HTTP response codes of RESTful APIs.</p>
                 </div>
             </div>
 
@@ -78,7 +91,7 @@
             if (!event) {
               result += '<br/><br/>(Notice: There is no event in this sentence)';
             } else {
-              result += '<br/><br/>(Notice: <span style="background: rgba(255, 0, 0, 0.4);">'+event+'</span>)'
+              result += '<br/><br/>(Notice: <span style="background: rgba(255, 0, 0, 0.4);"> Event: '+event+'</span>)'
             }
             $('#output').html(result);
         }).fail(function (data) {
