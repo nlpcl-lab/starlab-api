@@ -32,7 +32,6 @@
             </div>
 
             <hr/><br/>
-
             <div>
                 <h3>Live Demo</h3>
                 <hr/>
@@ -62,7 +61,26 @@
                input: input_text,
             }),
         }).done(function (data) {
-            $('#output').html(data.output);
+            var tokens =  data.output.split(' ');
+            var result = '';
+            var event = '';
+            for (let i = 0; i < tokens.length; i++) {
+                var token = tokens[i];
+                var word = token.split('/')[0];
+                var type = token.split('/')[1];
+                if (type === 'TRIGGER') {
+                    event = word;
+                    result += '<span style="background: rgba(255, 0, 0, 0.4);">'+ word + '</span> ';
+                } else {
+                  result += word + ' ';
+                }
+            }
+            if (!event) {
+              result += '<br/><br/>(Notice: There is no event in this sentence)';
+            } else {
+              result += '<br/><br/>(Notice: <span style="background: rgba(255, 0, 0, 0.4);">'+event+'</span>)'
+            }
+            $('#output').html(result);
         }).fail(function (data) {
             $('#output').html("Request failed!");
             console.error(data);

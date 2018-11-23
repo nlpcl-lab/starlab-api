@@ -1,4 +1,4 @@
-import os, sys, datetime, random, json
+import os, sys, datetime, random, json, requests
 from flask import Flask, session, g, request, jsonify, render_template, redirect, Response
 from flask_mongoengine import MongoEngine
 from subprocess import Popen, PIPE
@@ -115,13 +115,13 @@ def event_extraction_view():
 @app.route('/api/event-extraction', methods=['POST'])
 def api_event_extraction():
     log_api_access('event-extraction')
-
     data = request.get_json()
     sentence = data['input']
 
-    # TODO: Implement Operation Here
-    output = sentence
-
+    res = requests.post('http://credon.kaist.ac.kr:8085/api/event-extraction/trigger/identification', json={
+     'sentence': sentence,
+    })
+    output = res.json()['result']
     response = jsonify({'input': sentence, 'output': output})
     return response
 
