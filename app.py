@@ -150,19 +150,19 @@ def api_sentence_aligner():
 # automatic-tension-detection
 @app.route('/automatic-tension-detection')
 def tension_detection_view():
+
     return render_template('api_tension_detection.html')
 
 
 @app.route('/api/automatic-tension-detection', methods=['POST'])
 def api_tension_detection():
     log_api_access('automatic-tension-detection')
-
     data = request.get_json()
     sentence = data['input']
-
-    # TODO: Implement Operation Here
-    output = sentence
-
+    res = requests.post('http://credon.kaist.ac.kr:8086/api/tension-detection', json={
+        'input': sentence,
+    })
+    output = res.json()['output']
     response = jsonify({'input': sentence, 'output': output})
     return response
 

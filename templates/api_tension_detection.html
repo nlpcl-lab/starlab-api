@@ -27,7 +27,20 @@
                 <h3>API Usage</h3>
                 <hr/>
                 <div class="bg-light" style="text-align:left !important; padding: 0.4cm">
-                    <p>Coming soon.</p>
+                    <p>Use the following details to make API calls. The input and output data are both in <b>json</b> format.</p>
+                    <strong>Action: </strong> <code>Detection tension of an input sentence.</code><br/>
+                    <strong>URL: </strong>
+                        <code>/api/automatic-tension-detection</code><br/>
+                    <strong>Method: </strong>
+                        <code>POST</code> <br/>
+                    <strong>URL Params: </strong>
+                        <code>None</code> <br/>
+                    <strong>Data Params: </strong>
+                        <code>{ input: [string] }</code> <br/>
+                    <strong>Success Response: </strong>
+                        <code>{ input: "Input sentence.", ouput: "Degree of tension" }</code> <br/>
+
+                    <p>We use the standard HTTP response codes of RESTful APIs.</p>
                 </div>
             </div>
 
@@ -36,7 +49,7 @@
             <div>
                 <h3>Live Demo</h3>
                 <hr/>
-                <textarea class="form-control" id="input" rows="4" name="input" placeholder="Input text..." required=""></textarea>
+                <textarea class="form-control" id="input" rows="4" name="input" placeholder="Input text..." required="">굉장히 괴팍하게 생겼어 그리고 웬 왕자병이야? 무슨 근자감이야?</textarea>
                 <hr>
                 <button class="btn btn-primary btn-lg btn-block" id="btn-submit">Analyze</button>
                 <hr>
@@ -61,7 +74,12 @@
                input: input_text,
             }),
         }).done(function (data) {
-            $('#output').html(data.output);
+            var tension = {
+              '0': '긴장도 상',
+              '1': '긴장도 중',
+              '2': '긴장도 하'
+            };
+            $('#output').html(tension[data.output]);
         }).fail(function (data) {
             $('#output').html("Request failed!");
             console.error(data);
