@@ -6,8 +6,6 @@ from subprocess import Popen, PIPE
 import config
 from models import APIAccessLog
 
-
-
 app = Flask(__name__)
 
 app.config.from_object('config.Config')
@@ -29,8 +27,8 @@ def index_view():
         return render_template('index.html', apis=apis, APIAccessLog=APIAccessLog)
 
 
-def log_api_access(key):
-    log = APIAccessLog(key=key, ip=g.last_ip)
+def log_api_access(key, input='', output=''):
+    log = APIAccessLog(key=key, ip=g.last_ip, input=input, output=output)
     log.save()
 
 
@@ -43,19 +41,21 @@ def artext_view():
 
 
 from artext import Artext
+
 artxt = Artext()
 artxt.samples = 10
 artxt.error_overall = 0.25
 
+
 @app.route('/api/artext/noise', methods=['POST'])
 def api_artext():
-    log_api_access('artext')
-
     data = request.get_json()
     doc = data['input']
     noises = artxt.noise_document(doc)
+    output = '\n'.join(noises)
 
-    response = jsonify({'input': doc, 'output': '\n'.join(noises)})
+    log_api_access('artext', input=doc, output=output)
+    response = jsonify({'input': doc, 'output': output})
     return response
 
 
@@ -63,6 +63,7 @@ def api_artext():
 @app.route('/paraphraser')
 def paraphrase_view():
     return render_template('api_paraphraser.html')
+
 
 paraphraser_dir_path = '/home/webmaster/Web_API/API/Paraphrase_Generator'
 paraphraser_args = [
@@ -72,15 +73,18 @@ paraphraser_args = [
     '2',
 ]
 paraphraser_proc = Popen(paraphraser_args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+
+
 @app.route('/api/paraphraser', methods=['POST'])
 def api_paraphraser():
-    log_api_access('paraphraser')
     data = request.get_json()
     sentence = data['input'] + '\n'
     paraphraser_proc.stdin.write(sentence.encode())
     paraphraser_proc.stdin.flush()
     result = paraphraser_proc.stdout.readline().decode()
     result = result.replace('\n', '')
+
+    log_api_access('paraphraser', input=sentence, output=result)
 
     response = jsonify({'input': sentence, 'output': result})
     return response
@@ -114,14 +118,15 @@ def event_extraction_view():
 
 @app.route('/api/event-extraction', methods=['POST'])
 def api_event_extraction():
-    log_api_access('event-extraction')
     data = request.get_json()
     sentence = data['input']
 
     res = requests.post('http://credon.kaist.ac.kr:8085/api/event-extraction/trigger/identification', json={
-     'sentence': sentence,
+        'sentence': sentence,
     })
     output = res.json()['result']
+
+    log_api_access('event-extraction', input=sentence, output=output)
     response = jsonify({'input': sentence, 'output': output})
     return response
 
@@ -150,19 +155,18 @@ def api_sentence_aligner():
 # automatic-tension-detection
 @app.route('/automatic-tension-detection')
 def tension_detection_view():
-
     return render_template('api_tension_detection.html')
 
 
 @app.route('/api/automatic-tension-detection', methods=['POST'])
 def api_tension_detection():
-    log_api_access('automatic-tension-detection')
     data = request.get_json()
     sentence = data['input']
     res = requests.post('http://credon.kaist.ac.kr:8086/api/tension-detection', json={
         'input': sentence,
     })
     output = res.json()['output']
+    log_api_access('automatic-tension-detection', input=sentence, output=output)
     response = jsonify({'input': sentence, 'output': output})
     return response
 
